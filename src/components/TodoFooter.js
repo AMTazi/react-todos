@@ -1,45 +1,19 @@
 // @flow
-import React, { Component } from 'react';
-import TodoAction from './TodoAction';
-import type { Action } from '../custom-definitions/definitions';
+import React from 'react';
+import TodoCounter from '../containers/TodoCounter';
+import ClearCompeletedTodos from '../containers/ClearCompeletedTodos';
+import TodoFilters from './TodoFilters';
 
-type Props = {
-  IncompletedItemsLength: number,
-  actions: Array<Action>,
-  onFilterClick: (action: string) => void,
-  onClearCompletedClick: () => void
-};
+const TodoFooter = () => (
+   <footer className="footer">
 
-class TodoFooter extends Component<Props> {
-  handleClick = (action: string) => {
-    this.props.onFilterClick(action);
-  };
+        <TodoCounter />
 
-  render() {
-    const actions = this.props.actions.map(action => (
-      <TodoAction
-        key={action.action}
-        action={action}
-        onClick={this.handleClick}
-      />
-    ));
-    const { IncompletedItemsLength } = this.props;
+        <TodoFilters />
 
-    return (
-      <footer className="footer">
-        <span className="todo-count">
-          <strong>{IncompletedItemsLength}</strong> item left
-        </span>
-        <ul className="filters">{actions}</ul>
-        <button
-          className="clear-completed"
-          onClick={this.props.onClearCompletedClick}
-        >
-          Clear completed
-        </button>
-      </footer>
-    );
-  }
-}
+        <ClearCompeletedTodos />
+
+    </footer>
+)
 
 export default TodoFooter;

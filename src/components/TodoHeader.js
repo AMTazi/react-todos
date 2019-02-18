@@ -1,20 +1,18 @@
 // @flow
 import React from 'react';
-import TodoAddNewTodo from './TodoAddNewTodo';
+import TodoAddNewTodo from '../containers/TodoAddNewTodo';
 import Logo from '../Logo';
 
-type Props = {
-  onAddTodo: (newTodo: string) => void
-};
 
-const TodoHeader = (props: Props) => (
+const TodoHeader = () => (
   <header className="header">
     <div>
       <h1>
         t{<Logo className="App-logo" />}d{<Logo className="App-logo-reverse" />}s
       </h1>
     </div>
-    <TodoAddNewTodo onAddTodo={props.onAddTodo} />
+
+    <TodoAddNewTodo />
   </header>
 );
 

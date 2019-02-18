@@ -1,34 +1,12 @@
 // @flow
-import React, { Component } from 'react';
-import type { Action } from '../custom-definitions/definitions';
+import React from 'react';
+import Link from './Link';
 
-type Props = {
-  action: Action,
-  onClick: (action: string) => void
-};
+const TodoAction = (props) => (
 
-class TodoAction extends Component<Props> {
-  handleClick = (e: any) => {
-    e.preventDefault();
-
-    this.props.onClick(this.props.action.action);
-  };
-
-  render() {
-    const { action } = this.props;
-
-    return (
-      <li>
-        <a
-          className={action.selected ? 'selected' : ''}
-          href="#/"
-          onClick={this.handleClick}
-        >
-          {action.text}
-        </a>
-      </li>
-    );
-  }
-}
+  <li>
+    <Link {...props}/>
+  </li>
+);
 
 export default TodoAction;
