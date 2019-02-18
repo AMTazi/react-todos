@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import PropTypes from 'prop-types'
 
 const ToggleTodoCheckbox = ({
     completed,
@@ -14,5 +15,11 @@ const ToggleTodoCheckbox = ({
         />
     )
 }
+
+ToggleTodoCheckbox.propTypes = {
+  completed: PropTypes.bool.isRequired, 
+  toggleTodo: PropTypes.func.isRequired, 
+}
+
 
 export default ToggleTodoCheckbox;

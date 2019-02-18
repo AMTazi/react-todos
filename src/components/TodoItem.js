@@ -1,11 +1,12 @@
 // @flow
 import React from 'react';
+import PropTypes from 'prop-types'
+const classnames = require('classnames');
+
 import TodoEditInput from './TodoEditInput';
 import ToggleTodoCheckbox from './ToggleTodoCheckbox';
 import ShowTodo from './ShowTodo';
 import DestroyTodoButton from './DestroyTodoButton';
-
-const classnames = require('classnames');
 
 const TodoItem  = ({ 
   id, 
@@ -42,5 +43,17 @@ const TodoItem  = ({
       </li>
     );
 }
+
+TodoItem.propTypes = {
+  id: PropTypes.number.isRequired, 
+  text: PropTypes.string.isRequired,
+  editing: PropTypes.bool.isRequired, 
+  completed: PropTypes.bool.isRequired, 
+  toggleEditTodo: PropTypes.func.isRequired,
+  destroyTodo: PropTypes.func.isRequired,
+  toggleTodo: PropTypes.func.isRequired, 
+  editTodo: PropTypes.func.isRequired,
+}
+
 
 export default TodoItem;

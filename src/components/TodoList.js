@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import PropTypes from 'prop-types'
 import TodoItem from '../containers/AlterTodo';
 
 
@@ -17,5 +18,17 @@ const TodoList = ({
         }
     </ul>
 );
+
+
+TodoList.propTypes = {
+  todos: PropTypes.arrayOf(
+      PropTypes.shape({
+            id: PropTypes.number, 
+            text: PropTypes.string,
+            editing: PropTypes.bool, 
+            completed: PropTypes.bool, 
+      }).isRequired
+  ).isRequired
+}
 
 export default TodoList;

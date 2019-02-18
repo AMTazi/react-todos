@@ -5,6 +5,7 @@ import ClearCompeletedTodos from '../containers/ClearCompeletedTodos';
 import TodoFilters from './TodoFilters';
 
 const TodoFooter = () => (
+
    <footer className="footer">
 
         <TodoCounter />
@@ -14,6 +15,7 @@ const TodoFooter = () => (
         <ClearCompeletedTodos />
 
     </footer>
+    
 )
 
 export default TodoFooter;

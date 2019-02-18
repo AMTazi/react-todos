@@ -1,30 +1,22 @@
 // @flow
 import React, { Component } from 'react';
-import type { Todos } from '../custom-definitions/definitions';
+import PropTypes from 'prop-types'
 
-type Props = {
-  todo: Todos,
-};
 
-type State = {
-  newTodo: string
-};   
+class TodoEditInput extends Component {
 
-class TodoEditInput extends Component<Props, State> {
   state = {
     newTodo: this.props.text
   };
-
+  
   handleTodoChange = (e: any) => {
-
-    const nTodo = e.target.value;
 
     const { editTodo, toggleEditTodo, id, text } = this.props;
 
     switch (e.key) {
       case 'Enter':
-        if (text !== nTodo) {
-          editTodo(id, this.state.newTodo.trim());
+        if (text !== this.state.newTodo) {
+          editTodo(id, this.state.newTodo);
         }
         break;
       case 'Escape':
@@ -32,24 +24,32 @@ class TodoEditInput extends Component<Props, State> {
         break;
       default:
         this.setState({
-          newTodo: nTodo
-        });
+          newTodo: this.input.value
+        })
         break;
     }
   };
 
-  render() {
+  render () {
+
     return (
 
-       <input
-          ref={ (ref) => this.editingRef = ref}
-          className="edit"
-          value={this.state.newTodo}
-          onChange={this.handleTodoChange}
-          onKeyUp={this.handleTodoChange}
-        />
+      <input
+        ref={ (node) => this.input = node}
+        className="edit"
+        value={this.state.newTodo}
+        onChange={this.handleTodoChange}
+        onKeyUp={this.handleTodoChange}
+      />
     );
   }
+}
+
+TodoEditInput.propTypes = {
+  editTodo: PropTypes.func.isRequired,
+  toggleEditTodo: PropTypes.func.isRequired, 
+  id: PropTypes.number.isRequired, 
+  text: PropTypes.string.isRequired
 }
 
 export default TodoEditInput;

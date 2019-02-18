@@ -13,6 +13,7 @@ const TodoHeader = () => (
     </div>
 
     <TodoAddNewTodo />
+    
   </header>
 );
 
