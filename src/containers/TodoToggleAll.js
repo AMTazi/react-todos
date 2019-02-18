@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
+import {toggleAll} from '../actions'
 
 const TodoToggleAll = ({dispatch}) => (
   <div>
@@ -8,7 +9,7 @@ const TodoToggleAll = ({dispatch}) => (
       id="toggle-all"
       className="toggle-all"
       type="checkbox"
-      onChange={(e) => dispatch({type: "TOGGLE_ALL", completed: e.target.checked})}
+      onChange={(e) => dispatch(toggleAll(e.target.checked))}
     />
     <label htmlFor="toggle-all" />
   </div>
